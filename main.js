@@ -2,24 +2,24 @@
 
 
 const imgCarosello = [
-    {
-        image: '01.webp',
+{
+        image: 'img/01.webp',
         title: 'Marvel\'s Spiderman Miles Morale',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     }, {
-        image: '02.webp',
+        image: 'img/02.webp',
         title: 'Ratchet & Clank: Rift Apart',
         text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
     }, {
-        image: '03.webp',
+        image: 'img/03.webp',
         title: 'Fortnite',
         text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
     }, {
-        image: '04.webp',
+        image: 'img/04.webp',
         title: 'Stray',
         text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
     }, {
-        image: '05.webp',
+        image: 'img/05.webp',
         title: "Marvel's Avengers",
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
@@ -30,9 +30,10 @@ const container = document.getElementById("container")
 imgCarosello.forEach(item => {
 
     const imagesHTML = `
-    <img class="image" src="${item.image}" alt="${item.title}">
+    <img class="image" src="${item.image}">
     <p class="title">${item.title}</p>
     <p class="text">${item.text}</p>
+  
     `
 
 container.innerHTML += imagesHTML;
@@ -64,7 +65,7 @@ const arrowUp = document.querySelector(".fa-arrow-up");
 arrowUp.addEventListener("click", function (){
     console.log ("Avanti")
 
-    //IMG///
+    /*//IMG///
     if(attualeImg < images.length -1){
         images[attualeImg].classList.remove("active");
         attualeImg++;
@@ -101,8 +102,24 @@ arrowUp.addEventListener("click", function (){
         attualeText= 0;
         text[attualeText].classList.add("active");
 
-    }
+    }*/
 
+ 
+    function removeAddClassArrowUp(index, array) {
+        if (index < array.length - 1) {
+            array[index].classList.remove("active");
+            index++;
+            array[index].classList.add("active");
+        } else {
+            array[index].classList.remove("active");
+            index = 0;
+            array[index].classList.add("active");
+        }
+    }
+    
+    removeAddClassArrowUp(attualeImg, images);
+    removeAddClassArrowUp(attualeParagrafo, title);
+    removeAddClassArrowUp(attualeText, text);
 
 
 });
@@ -113,7 +130,7 @@ const arrowDown = document.querySelector(".fa-arrow-down");
 arrowDown.addEventListener("click", function (){
     console.log ("Indietro");
 
-     //IMG///
+   /*//IMG///
     if(attualeImg > 0){
         images[attualeImg].classList.remove("active");
         attualeImg--;
@@ -149,10 +166,32 @@ arrowDown.addEventListener("click", function (){
         text[attualeText].classList.remove("active");
         attualeText= 4;
         text[attualeText].classList.add("active");
+    }*/
+
+
+    function removeAddClassDown(index, array) {
+        if (index > 0) {
+            array[index].classList.remove("active");
+            index++;
+            array[index].classList.add("active");
+        } else {
+            array[index].classList.remove("active");
+            index = 4;
+            array[index].classList.add("active");
+        }
     }
+    
+    removeAddClassDown(attualeImg, images);
+    removeAddClassDown(attualeParagrafo, title);
+    removeAddClassDown(attualeText, text);
+
+
+});
  
 
-})
+
+
+
 
 
 
